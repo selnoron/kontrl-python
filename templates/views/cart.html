@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Главная страница</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 150px;
+            border: 2px solid black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .fr {
+            width: 100%;
+            height: 100%;
+            padding-top: 10px;
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        input {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            border: None;
+            width: 80%;
+        }
+        button {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>user - {{ carts[0][1] }}</h1>
+    <a href="/">Leave cart</a>
+    <br>
+    {% for cart in carts %}
+    <div class="box">
+    <form class="fr" method="post" action="/cart">
+        <input name="id" id="id" type="text" value="{{cart[0]}}">
+        <b><input type="text" value="{{cart[2]}}"></b> 
+        <input type="text" value="{{cart[3]}} tenge"> 
+        <input type="text" value="{{cart[4]}}">
+        <button type="submit"><b>delete</b></button>
+    </form>
+    </div>
+    {% endfor %}
+</body>
+</html>

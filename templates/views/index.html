@@ -6,9 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Главная страница</title>
+    <style>
+        .box {
+            width: 230px;
+            height: 250px;
+            border: 2px solid black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .fr {
+            width: 100%;
+            height: 30%;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+        .sc {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            height: 70%;
+            padding-left: 20px;
+        }
+        input {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            border: None;
+        }
+    </style>
 </head>
 <body>
-    <h1>Главная страница</h1>
+    <a href="/addbook">Add new book</a>
     <a href="/deauth">Leave</a>
+    <a href="/cart">Your Cart</a> <br>
+    <a href="/search">SEARCH</a>
+    
+    <br>
+    {% for pc in pcs %}
+    <form action="/" method="post" class="box">
+    <div class="fr">
+        <b><input id="comp_name" name="comp_name" type="text" value="{{pc[2]}}"></b> <br>
+        <b><input id="comp_price" name="comp_price" type="text" value="{{pc[1]}} tenge"></b> <br>
+        <button type="submit"><b>BUY</b></button> 
+    </div>
+    <div class="sc">
+        <div><input id="comp_manufacturer" name="comp_manufacturer" type="text" value="manufacturer(country) - {{pc[3]}}"></div>
+        <div>date - {{pc[4]}}</div>
+        <div>cpu(name) - {{pc[5]}}</div>
+        <div>ssd(GB) - {{pc[6]}}</div>
+        <div>ram(GB) - {{pc[7]}}</div>
+        <div>gpu(name) - {{pc[8]}}</div>
+    </div>
+    </form>
+    {% endfor %}
 </body>
 </html>
